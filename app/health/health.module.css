@@ -1,0 +1,650 @@
+.main {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pageContainer {
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.tabContainer {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.headerTopRow {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.backButton {
+  background-color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.backButton:hover {
+  background-color: #475569;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background-color: #0051aa;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button svg {
+  margin-right: 6px;
+}
+
+.refreshButton {
+  margin-left: auto;
+  background-color: #059669;
+}
+
+.refreshButton:hover {
+  background-color: #047857;
+}
+
+/* Settings Button */
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.settingsButton {
+  background-color: #475569;
+}
+
+.settingsButton:hover {
+  background-color: #334155;
+}
+
+/* Settings Panel */
+.settingsPanel {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.settingsPanelHeader {
+  margin-bottom: 1.25rem;
+}
+
+.settingsPanelTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.settingsPanelDescription {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.serviceListTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #334155;
+}
+
+.serviceCheckboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.serviceCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #f8fafc;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.serviceCheckbox:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.serviceCheckbox input {
+  margin-right: 0.5rem;
+}
+
+.settingsActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1rem;
+}
+
+.resetButton {
+  padding: 0.5rem 0.75rem;
+  background-color: #f1f5f9;
+  color: #475569;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #cbd5e1;
+}
+
+.resetButton:hover {
+  background-color: #e2e8f0;
+}
+
+.closeSettingsButton {
+  padding: 0.5rem 0.75rem;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.closeSettingsButton:hover {
+  background-color: #0051aa;
+}
+
+.statusPanel {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statusHeader {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.statusTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem;
+}
+
+.statusTime {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.healthStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.healthStatusInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.healthStatusText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.healthy {
+  background-color: #10b981;
+  color: #065f46;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.degraded {
+  background-color: #f59e0b;
+  color: #92400e;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+}
+
+.error {
+  background-color: #ef4444;
+  color: #991b1b;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.serviceCard {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.serviceCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.serviceHeader {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.serviceName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.serviceStatus {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  text-transform: capitalize;
+}
+
+.serviceStatusHealthy {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.serviceStatusDegraded {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.serviceStatusError {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.serviceStatusUnavailable {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.serviceStatusUnmonitored {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.serviceContent {
+  padding: 1.5rem;
+}
+
+.serviceDetail {
+  margin-bottom: 1rem;
+}
+
+.serviceDetailLabel {
+  display: block;
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.serviceDetailValue {
+  font-size: 1rem;
+  color: #1e293b;
+  word-break: break-all;
+}
+
+.serviceLatency {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.latencyBadge {
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.goodLatency {
+  color: #059669;
+}
+
+.mediumLatency {
+  color: #d97706;
+}
+
+.badLatency {
+  color: #dc2626;
+}
+
+.errorMessage {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  word-break: break-word;
+  font-family: monospace;
+}
+
+.loadingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+  padding: 1.5rem;
+  justify-content: center;
+}
+
+.spinIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.healthSummary {
+  text-align: center;
+  margin-bottom: 2rem;
+  background-color: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.summaryText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.healthyCount {
+  color: #059669;
+  font-weight: 600;
+}
+
+.errorCount {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.totalCount {
+  color: #475569;
+  font-weight: 600;
+}
+
+.unavailableCount {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.unavailableCard {
+  opacity: 0.8;
+  background-color: #fcfcfd;
+}
+
+.unavailableCard:hover {
+  opacity: 1;
+}
+
+.unavailableServiceContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.unavailableIcon {
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+
+.unavailableText {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.unmonitoredCard {
+  opacity: 0.75;
+  border: 1px dashed #cbd5e1;
+}
+
+.unmonitoredCard:hover {
+  opacity: 1;
+}
+
+.unmonitoredServiceContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.unmonitoredIcon {
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.unmonitoredText {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.sectionDivider {
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 0.25rem;
+}
+
+.sectionSubtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.serviceActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.serviceRefreshButton {
+  background: transparent;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.serviceRefreshButton:hover {
+  background-color: #f1f5f9;
+  color: #0070f3;
+  transform: translateY(-1px);
+}
+
+.serviceRefreshButton:active {
+  transform: translateY(0);
+}
+
+.serviceRefreshButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.addMonitorButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.6rem;
+  background-color: #22c55e;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  margin-right: 0.5rem;
+}
+
+.addMonitorButton:hover {
+  background-color: #16a34a;
+}
+
+.addServiceButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addServiceButton:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0070f3;
+}
+
+/* Service Monitor Toggle Button */
+.serviceMonitorToggle {
+  padding: 0.25rem;
+  background-color: transparent;
+  color: #94a3b8;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-right: 0.5rem;
+}
+
+.serviceMonitorToggle:hover {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1.5rem 1rem;
+  }
+  
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+}

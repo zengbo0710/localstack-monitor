@@ -1,0 +1,623 @@
+.main {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pageContainer {
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.tabContainer {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.lastUpdated {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background-color: #0051aa;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button svg {
+  margin-right: 6px;
+}
+
+.refreshButton {
+  background-color: #059669;
+}
+
+.refreshButton:hover {
+  background-color: #047857;
+}
+
+.refreshButton:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.headerTopRow {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.refreshControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.autoRefreshSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.refreshSelect {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: #334155;
+}
+
+.refreshSelect:hover {
+  border-color: #94a3b8;
+}
+
+.backButton {
+  background-color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.backButton:hover {
+  background-color: #475569;
+}
+
+/* Queue List Search and Header */
+.queueListHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.searchInput {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
+}
+
+.queueList {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  margin-bottom: 2rem;
+}
+
+.queueTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.queueTable th, 
+.queueTable td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.queueTable th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.queueTable tr {
+  transition: background-color 0.15s ease;
+}
+
+.queueTable tr:last-child td {
+  border-bottom: none;
+}
+
+.queueTable tr:hover {
+  background-color: #f1f5f9;
+}
+
+.selectedRow {
+  background-color: #e6f1fe !important;
+  border-left: 4px solid #0070f3;
+}
+
+.queueName {
+  word-break: break-all;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.queueMessageCount {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  padding: 0.5rem 0;
+}
+
+/* Queue timestamp styles */
+.queueTimestamp {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.timestampIcon {
+  color: #94a3b8;
+}
+
+.queueDetailTimestamp {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: #64748b;
+  margin-left: 1rem;
+}
+
+.actionCell {
+  text-align: right;
+}
+
+.error {
+  color: #d32f2f;
+  padding: 1.25rem;
+  background-color: #ffebee;
+  border-radius: 8px;
+  border-left: 4px solid #d32f2f;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background-color: #0051aa;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button svg {
+  margin-right: 6px;
+}
+
+.secondaryButton {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.secondaryButton:hover {
+  background-color: #cbd5e1;
+}
+
+.refreshButton {
+  margin-left: auto;
+}
+
+.deleteButton {
+  background-color: #ef4444;
+}
+
+.deleteButton:hover {
+  background-color: #b91c1c;
+}
+
+.sendButton {
+  padding: 0.75rem 1rem;
+}
+
+/* Detail panel styles */
+.detailPanel {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.queueDetailTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.queueDetailActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #1e293b;
+  padding: 0 1.5rem;
+}
+
+/* Send message form styles */
+.sendMessageForm {
+  padding: 1.5rem;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #1e293b;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formLabel {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #475569;
+}
+
+.formInput, .formTextarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.formInput:focus, .formTextarea:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
+}
+
+.formTextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Messages section styles */
+.messagesSection {
+  padding: 1.5rem 0 1.5rem;
+}
+
+.loadingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+  padding: 1.5rem;
+  justify-content: center;
+}
+
+.spinIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  margin: 0 1.5rem;
+}
+
+.infoText {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+
+/* Message Table Styles */
+.messagesTable {
+  overflow-x: auto;
+  margin: 0 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.messageRow:hover {
+  background-color: #f1f5f9;
+}
+
+.messageNumber {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  width: 60px;
+  text-align: center;
+}
+
+.messageIdCell {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.messageBodyCell {
+  min-width: 300px;
+  max-width: 50%;
+}
+
+.messageBodyContent {
+  background-color: #f8fafc;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 100px;
+  overflow-y: auto;
+  font-size: 0.875rem;
+}
+
+.messageAttributesCell {
+  max-width: 300px;
+}
+
+.messageAttributes {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.attributeItem {
+  margin-bottom: 0.5rem;
+}
+
+.attributeName {
+  font-weight: 600;
+  color: #475569;
+}
+
+.attributeValue {
+  color: #64748b;
+}
+
+.sortButton {
+  background-color: #475569;
+}
+
+.sortButton:hover {
+  background-color: #334155;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.pagination .button {
+  min-width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.pagination .button:hover {
+  background-color: #cbd5e1;
+}
+
+.pagination .activePage {
+  background-color: #0070f3;
+  color: white;
+}
+
+.pagination .activePage:hover {
+  background-color: #0051aa;
+}
+
+/* Sortable Header Styles */
+.sortableHeader {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.sortableHeader:hover {
+  background-color: #f1f5f9;
+}
+
+.sortIcon {
+  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  color: #0070f3;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1.5rem 1rem;
+  }
+  
+  .queueListHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchContainer {
+    max-width: 100%;
+  }
+  
+  .queueTable th, 
+  .queueTable td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .messageIdCell {
+    max-width: 100px;
+  }
+  
+  .messageBodyCell {
+    min-width: 150px;
+  }
+  
+  .detailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .queueDetailActions {
+    width: 100%;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+  }
+}

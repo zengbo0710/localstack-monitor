@@ -1,0 +1,103 @@
+/* Tab Navigation Container */
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  position: relative;
+  background-color: #ffffff;
+  -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
+  scrollbar-width: none;     /* Hide scrollbar Firefox */
+  align-items: stretch; /* Ensure all tabs align evenly */
+  height: 3.5rem; /* Fixed height for container */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Tab Item */
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  font-weight: 500;
+  color: #64748b;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  margin: 0;
+  position: relative;
+  height: 3.5rem; /* Fixed height for all tabs */
+  box-sizing: border-box;
+  /* Prevent any shifting */
+  transform: translateY(0) !important;
+  will-change: color, background-color;
+}
+
+/* Add bottom indicator as pseudo-element instead of border */
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect for tabs */
+.tab:hover {
+  color: #334155;
+  background-color: #f8fafc;
+}
+
+/* Active tab styling */
+.activeTab {
+  color: #0070f3;
+  font-weight: 600;
+  background-color: #f0f7ff;
+  /* Ensure active tab has same dimensions as inactive */
+  box-shadow: none;
+  transform: none;
+}
+
+/* Active tab bottom indicator */
+.activeTab::after {
+  background-color: #0070f3;
+}
+
+/* Tab icon styling */
+.tabIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabIcon {
+  font-size: 1.125rem;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.tabLabel {
+  margin-left: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    height: 3rem;
+  }
+  
+  .tabIcon {
+    font-size: 1rem;
+  }
+}
