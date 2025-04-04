@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalStack Monitor Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>LocalStack Monitor Settings</h1>
+    </header>
+    
+    <main>
+      <div class="settings-card">
+        <h2>Connection Settings</h2>
+        
+        <div class="form-group">
+          <label for="localstackEndpoint">LocalStack Endpoint:</label>
+          <input type="text" id="localstackEndpoint" placeholder="http://localhost:4566">
+          <p class="help-text">The base URL of your LocalStack instance</p>
+        </div>
+        
+        <div class="form-actions">
+          <button id="saveSettings" class="primary-button">Save Settings</button>
+        </div>
+      </div>
+      
+      <div class="settings-card">
+        <h2>About</h2>
+        <p>LocalStack Monitor is a Chrome extension that allows you to monitor and manage services running in your LocalStack instance.</p>
+        <p>Version: 1.0.0</p>
+      </div>
+    </main>
+    
+    <div id="saveNotification" class="notification">Settings saved successfully!</div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

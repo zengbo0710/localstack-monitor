@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LocalStack Test</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    #result {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      max-height: 300px;
+      overflow: auto;
+      word-break: break-all;
+    }
+    button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h3>LocalStack Connection Test</h3>
+  
+  <div>
+    <button id="testLocalhost">Test localhost:4566</button>
+    <button id="test127">Test 127.0.0.1:4566</button>
+  </div>
+
+  <div id="result">Results will appear here...</div>
+
+  <script src="test-popup.js"></script>
+</body>
+</html>

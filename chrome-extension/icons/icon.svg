@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" fill="#0F172A"/>
+  <text x="22" y="72" font-family="Arial" font-size="18" fill="white">Local</text>
+  <text x="40" y="92" font-family="Arial" font-size="18" fill="#10B981">Stack</text>
+  <path d="M32 32 L96 32 L96 96 L32 96 Z" fill="none" stroke="white" stroke-width="4"/>
+  <rect x="40" y="40" width="16" height="16" fill="#10B981"/>
+  <rect x="72" y="40" width="16" height="16" fill="#10B981"/>
+  <rect x="40" y="72" width="16" height="16" fill="#10B981"/>
+  <rect x="72" y="72" width="16" height="16" fill="#10B981"/>
+</svg>

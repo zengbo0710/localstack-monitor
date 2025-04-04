@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LocalStack Direct Test</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      max-width: 800px; 
+      margin: 0 auto; 
+    }
+    button { 
+      padding: 8px 16px; 
+      margin: 8px; 
+      background-color: #0f172a;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e293b;
+    }
+    #output { 
+      border: 1px solid #ccc; 
+      padding: 10px; 
+      margin-top: 10px; 
+      height: 300px; 
+      overflow: auto; 
+      background-color: #f8fafc;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    .error { color: #e11d48; }
+    .success { color: #10b981; }
+  </style>
+</head>
+<body>
+  <h2>LocalStack Connection Tester</h2>
+  <p>Use these buttons to test direct connections to LocalStack:</p>
+  
+  <div>
+    <button id="testLocalhost">Test localhost:4566</button>
+    <button id="test127">Test 127.0.0.1:4566</button>
+    <button id="testProxy">Test via Proxy</button>
+    <button id="checkPermissions">Check Permissions</button>
+  </div>
+  
+  <div id="output">Results will appear here...</div>
+  
+  <script>
+    document.getElementById('testLocalhost').addEventListener('click', () => {
+      testDirectConnection('http://localhost:4566');
+    });
+    
+    document.getElementById('test127').addEventListener('click', () => {
+      testDirectConnection('http://127.0.0.1:4566');
+    });
+    
+    document.getElementById('testProxy').addEventListener('click', () => {
+      testProxyConnection();
+    });
+    
+    document.getElementById('checkPermissions').addEventListener('click', () => {
+      checkPermissions();
+    });
+    
+    async function testDirectConnection(endpoint) {
+      const output = document.getElementById('output');
+      output.innerHTML = `Testing direct connection to ${endpoint}/_localstack/health...`;
+      
+      try {
+        const response = await fetch(`${endpoint}/_localstack/health`);
+        const data = await response.json();
+        output.innerHTML = `<span class="success">✅ Success! Connected to ${endpoint}</span>\n\nResponse:\n${JSON.stringify(data, null, 2)}`;
+      } catch (error) {
+        output.innerHTML = `<span class="error">❌ Error connecting to ${endpoint}:</span>\n${error.message}\n\nThis might be due to CORS restrictions or LocalStack not running.`;
+      }
+    }
+    
+    function testProxyConnection() {
+      const output = document.getElementById('output');
+      output.innerHTML = 'Testing connection via background script proxy...';
+      
+      chrome.runtime.sendMessage({
+        action: 'proxy-request',
+        options: {
+          url: 'http://localhost:4566/_localstack/health',
+          method: 'GET'
+        }
+      }, response => {
+        if (response && response.success) {
+          output.innerHTML = `<span class="success">✅ Success! Connected via proxy</span>\n\nResponse:\n${JSON.stringify(response.data, null, 2)}`;
+        } else {
+          output.innerHTML = `<span class="error">❌ Error connecting via proxy:</span>\n${response ? response.error : 'Unknown error'}`;
+        }
+      });
+    }
+    
+    function checkPermissions() {
+      const output = document.getElementById('output');
+      output.innerHTML = 'Checking extension permissions...';
+      
+      const hosts = [
+        'http://localhost:4566/*',
+        'http://127.0.0.1:4566/*'
+      ];
+      
+      const results = [];
+      
+      hosts.forEach(host => {
+        chrome.permissions.contains({
+          origins: [host]
+        }, result => {
+          results.push(`${host}: ${result ? '✅ Granted' : '❌ Not granted'}`);
+          output.innerHTML = `Permission check results:\n\n${results.join('\n')}`;
+        });
+      });
+    }
+  </script>
+</body>
+</html>

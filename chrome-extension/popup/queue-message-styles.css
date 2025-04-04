@@ -1,0 +1,267 @@
+/* Queue Message Detail View Styles */
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+}
+
+.back-button .icon {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Message Content Styles */
+.json-body {
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #333;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* JSON syntax highlighting */
+.json-body .key {
+  color: #0451a5;
+}
+
+.json-body .string {
+  color: #a31515;
+}
+
+.json-body .number {
+  color: #098658;
+}
+
+.json-body .boolean {
+  color: #0000ff;
+}
+
+.message-body {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.send-message-panel {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  resize: vertical;
+}
+
+.send-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: #4c8bf5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  align-self: flex-end;
+}
+
+.send-button:hover {
+  background-color: #3b7ae4;
+}
+
+.send-button:disabled {
+  background-color: #a5bff0;
+  cursor: not-allowed;
+}
+
+.messages-section {
+  margin-top: 20px;
+}
+
+.message-row {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  padding: 8px 12px;
+  font-size: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.message-id {
+  font-family: monospace;
+  font-weight: 500;
+  color: #555;
+}
+
+.message-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.delete-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.delete-button:hover {
+  background-color: #ff7875;
+}
+
+.delete-button:disabled {
+  background-color: #ffb4b5;
+  cursor: not-allowed;
+}
+
+.message-body {
+  padding: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-all;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.message-attributes {
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+  font-size: 12px;
+}
+
+.attribute-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.attribute-name {
+  font-weight: 500;
+  color: #666;
+  width: 120px;
+}
+
+.attribute-value {
+  font-family: monospace;
+}
+
+.empty-messages {
+  padding: 40px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px dashed #ddd;
+  border-radius: 4px;
+  color: #666;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 5px;
+}
+
+.page-button {
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.page-button.active {
+  background-color: #4c8bf5;
+  color: white;
+  border-color: #4c8bf5;
+}
+
+.visibility-timeout {
+  color: #666;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.visibility-timeout .icon {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}

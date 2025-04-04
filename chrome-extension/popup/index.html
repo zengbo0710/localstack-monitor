@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalStack Monitor</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="bucket-styles.css">
+  <link rel="stylesheet" href="queue-message-styles.css">
+  <!-- AWS SDK and configuration -->
+  <script src="../lib/aws-sdk.min.js"></script>
+  <script src="../lib/aws-config.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>LocalStack Monitor</h1>
+    </header>
+    
+    <nav class="tabs" id="tabNavigation">
+      <button class="tab-button active" data-tab="health">Health Status</button>
+      <button class="tab-button" data-tab="s3">S3 Buckets</button>
+      <button class="tab-button" data-tab="sqs">SQS Queues</button>
+    </nav>
+    
+    <main>
+      <!-- Health Status Tab -->
+      <div class="tab-content active" id="healthTab">
+        <div class="header-row">
+          <h2>Health Status</h2>
+          <button id="refreshHealth" class="refresh-button">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+              <path d="M23 4v6h-6"></path>
+              <path d="M1 20v-6h6"></path>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            Refresh
+          </button>
+        </div>
+        <div id="healthStatusContainer" class="status-container">
+          <div class="loading">Loading health status...</div>
+        </div>
+        <div id="healthLastUpdated" class="last-updated"></div>
+      </div>
+      
+      <!-- S3 Buckets Tab -->
+      <div class="tab-content" id="s3Tab">
+        <div id="bucketListView">
+          <div class="header-row">
+            <h2>S3 Buckets</h2>
+            <button id="refreshS3" class="refresh-button">
+              <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                <path d="M23 4v6h-6"></path>
+                <path d="M1 20v-6h6"></path>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+              Refresh
+            </button>
+          </div>
+          <div class="search-container">
+            <input type="text" id="bucketSearch" placeholder="Search buckets...">
+          </div>
+          <div id="bucketsContainer" class="data-container">
+            <div class="loading">Loading buckets...</div>
+          </div>
+          <div id="s3LastUpdated" class="last-updated"></div>
+        </div>
+        
+        <!-- Bucket Objects View (initially hidden) -->
+        <div id="bucketObjectsView" class="bucket-objects-view hidden">
+          <div class="header-row">
+            <div class="back-button-container">
+              <button id="backToBuckets" class="back-button">
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                </svg>
+                Back to Buckets
+              </button>
+              <h2 id="currentBucketName">Bucket Objects</h2>
+            </div>
+            <div class="action-buttons">
+              <div class="upload-container">
+                <input type="file" id="fileUpload" class="file-input" />
+                <button id="uploadButton" class="upload-button">
+                  <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                  Upload File
+                </button>
+              </div>
+              <button id="refreshObjects" class="refresh-button">
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M23 4v6h-6"></path>
+                  <path d="M1 20v-6h6"></path>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                Refresh
+              </button>
+            </div>
+          </div>
+          <div class="search-container">
+            <input type="text" id="objectSearch" placeholder="Search objects...">
+          </div>
+          <div id="objectsContainer" class="data-container">
+            <div class="loading">Loading objects...</div>
+          </div>
+          <div id="objectLastUpdated" class="last-updated"></div>
+        </div>
+      </div>
+      
+      <!-- SQS Queues Tab -->
+      <div class="tab-content" id="sqsTab">
+        <!-- Queue List View (default) -->
+        <div id="queueListView">
+          <div class="header-row">
+            <h2>SQS Queues</h2>
+            <div class="actions-row">
+              <div class="region-selector">
+                <label for="queueRegionSelect">Region:</label>
+                <select id="queueRegionSelect">
+                  <option value="ap-east-1">Asia Pacific (Hong Kong)</option>
+                  <option value="ap-south-1">Asia Pacific (Mumbai)</option>
+                  <option value="ap-northeast-1">Asia Pacific (Tokyo)</option>
+                  <option value="ap-southeast-1" selected>Asia Pacific (Singapore)</option>
+                  <option value="ap-southeast-2">Asia Pacific (Sydney)</option>
+                  <option value="eu-central-1">Europe (Frankfurt)</option>
+                  <option value="eu-west-1">Europe (Ireland)</option>
+                  <option value="eu-west-2">Europe (London)</option>
+                  <option value="us-east-1">US East (N. Virginia)</option>
+                  <option value="us-east-2">US East (Ohio)</option>
+                  <option value="us-west-1">US West (N. California)</option>
+                  <option value="us-west-2">US West (Oregon)</option>
+                </select>
+              </div>
+              <div class="all-regions-toggle">
+                <label for="showAllRegions" class="toggle-label">
+                  <input type="checkbox" id="showAllRegions">
+                  <span class="toggle-text">Show all regions</span>
+                </label>
+              </div>
+              <div class="auto-refresh">
+                <label for="autoRefreshSelect">Auto-refresh:</label>
+                <select id="autoRefreshSelect">
+                  <option value="">Off</option>
+                  <option value="5">5s</option>
+                  <option value="10">10s</option>
+                  <option value="20">20s</option>
+                  <option value="30">30s</option>
+                </select>
+              </div>
+              <button id="refreshSQS" class="refresh-button">
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M23 4v6h-6"></path>
+                  <path d="M1 20v-6h6"></path>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                Refresh
+              </button>
+            </div>
+          </div>
+          <div class="search-container">
+            <input type="text" id="queueSearch" placeholder="Search queues...">
+          </div>
+          <div id="queuesContainer" class="data-container">
+            <div class="loading">Loading queues...</div>
+          </div>
+          <div id="sqsLastUpdated" class="last-updated"></div>
+          <div id="paginationContainer" class="pagination-container"></div>
+        </div>
+        
+        <!-- Queue Detail View (initially hidden) -->
+        <div id="queueDetailView" style="display: none;">
+          <div class="header-row">
+            <button id="backToQueues" class="back-button">
+              <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                <path d="M19 12H5M12 19l-7-7 7-7"></path>
+              </svg>
+              Back to Queues
+            </button>
+            <h2 id="queueDetailTitle">Queue Messages</h2>
+            <div class="actions-row">
+              <button id="refreshMessages" class="refresh-button">
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M23 4v6h-6"></path>
+                  <path d="M1 20v-6h6"></path>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                Refresh Messages
+              </button>
+            </div>
+          </div>
+          
+          <!-- Send Message Form -->
+          <div class="send-message-panel">
+            <h3 class="section-title">Send Message to Queue</h3>
+            <form id="sendMessageForm" class="message-form">
+              <div class="form-group">
+                <label for="messageBody">Message Body:</label>
+                <textarea id="messageBody" placeholder="Enter message body (JSON or plain text)" required></textarea>
+              </div>
+              <button type="submit" id="sendMessageBtn" class="send-button">
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+                </svg>
+                Send Message
+              </button>
+            </form>
+          </div>
+          
+          <!-- Messages List -->
+          <div class="messages-section">
+            <h3 class="section-title">Messages in Queue</h3>
+            <div id="messagesContainer" class="data-container">
+              <div class="loading">Loading messages...</div>
+            </div>
+            <div id="messagesLastUpdated" class="last-updated"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <span>Connected to: <span id="endpointUrl">http://localhost:4566</span></span>
+    </footer>
+  </div>
+  
+  <script src="popup.js" type="module"></script>
+  <script src="popup-object-handlers.js" type="module"></script>
+</body>
+</html>

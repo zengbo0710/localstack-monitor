@@ -1,0 +1,26 @@
+{
+  "name": "LocalStack Monitor",
+  "version": "1.0.0",
+  "description": "A Chrome extension for monitoring and managing LocalStack services",
+  "manifest_version": 3,
+  "icons": {
+    "128": "icons/icon.svg"
+  },
+  "action": {
+    "default_icon": "icons/icon.svg"
+  },
+  "background": {
+    "service_worker": "background/tab-opener.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:4566/*",
+    "http://127.0.0.1:4566/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://localhost:4566 http://127.0.0.1:4566 https://*.amazonaws.com https://*.amazontrust.com"
+  }
+}
