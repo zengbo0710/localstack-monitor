@@ -1,0 +1,22 @@
+{
+  "name": "LocalStack Debug Tester",
+  "version": "1.0.0",
+  "description": "A simple extension for debugging LocalStack connections",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "debug.html"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "http://127.0.0.1:3000/*",
+    "http://localhost:4566/*",
+    "http://127.0.0.1:4566/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://localhost:3000 http://localhost:4566 http://127.0.0.1:3000 http://127.0.0.1:4566"
+  }
+}

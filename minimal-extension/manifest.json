@@ -1,0 +1,21 @@
+{
+  "name": "LocalStack Monitor Lite",
+  "version": "1.0.0",
+  "description": "A lightweight monitor for LocalStack services",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:4566/*",
+    "http://127.0.0.1:4566/*"
+  ]
+}

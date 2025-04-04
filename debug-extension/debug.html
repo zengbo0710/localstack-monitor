@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LocalStack Connection Debugger</title>
+  <style>
+    body {
+      width: 700px;
+      height: 600px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 16px;
+      margin-top: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .control-panel {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+    .results {
+      flex-grow: 1;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #0f172a;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .success { color: green; }
+    .error { color: red; }
+    .info { color: blue; }
+    label {
+      margin-right: 8px;
+    }
+    input[type="text"] {
+      width: 240px;
+      padding: 6px;
+      margin-right: 10px;
+    }
+    .endpoint-row {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>LocalStack Connection Debugger</h1>
+    
+    <div class="control-panel">
+      <div class="endpoint-row">
+        <label for="localstack-endpoint">LocalStack:</label>
+        <input type="text" id="localstack-endpoint" value="http://localhost:4566">
+        
+        <label for="nextjs-endpoint">Next.js:</label>
+        <input type="text" id="nextjs-endpoint" value="http://localhost:3000">
+      </div>
+      
+      <div>
+        <button id="test-direct">Test Direct Connection</button>
+        <button id="test-proxy">Test Proxy Connection</button>
+        <button id="test-health">Get Health Status</button>
+        <button id="clear-log">Clear Log</button>
+      </div>
+    </div>
+    
+    <div id="results" class="results">Debug results will appear here...</div>
+  </div>
+  
+  <script src="debug.js"></script>
+</body>
+</html>
